@@ -1,32 +1,4 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-*.egg-info/
-dist/
-build/
-*.egg
-
-# Django
-db.sqlite3
-*.log
-logs/
-media/
-staticfiles/
-
-# Environment
+node_modules/
+client/node_modules/
+server/node_modules/
 .env
-.venv
-venv/
-env/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
