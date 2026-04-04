@@ -1,0 +1,7 @@
+{
+  "name": "legal-aid-portal",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd client && npm install --legacy-peer-deps && npm run build"
+  }
+}
