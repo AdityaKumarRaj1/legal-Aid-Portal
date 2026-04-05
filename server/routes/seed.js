@@ -12,8 +12,9 @@ router.get('/', async (req, res) => {
                   'Intellectual Property', 'Consumer Law', 'Environmental Law', 'Human Rights'
                 ];
           for (const name of CATEGORIES) {
-                  await Category.updateOne({ name }, { name, isActive: true }, { upsert: true });
-          }
+                        const slug = name.toLowerCase().replace(/ /g, '-');
+                    await Category.updateOne({ name }, { name, slug, isActive: true }, { upsert: true });
+              
           const categories = await Category.find();
 
       const dummyLawyers = [
