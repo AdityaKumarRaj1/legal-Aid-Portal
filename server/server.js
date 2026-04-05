@@ -24,7 +24,7 @@ app.use('/api/categories', require('./routes/categories'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/upload', require('./routes/upload'));
-
+app.use('/api/seed', require('./routes/seed'));
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Legal Aid Portal API running' }));
 
