@@ -33,15 +33,19 @@ async function seed() {
   await Promise.all([User.deleteMany({}), LawyerProfile.deleteMany({}), Category.deleteMany({})]);
   console.log('🗑️  Cleared existing data');
 
-  // Seed categories
-  const cats = await Category.insertMany(CATEGORIES);
+  // Seed categories (using create so pre-save hook runs for slug generation)
+  const cats = [];
+  for (const cat of CATEGORIES) {
+    const created = await Category.create(cat);
+    cats.push(created);
+  }
   console.log(`📂 Created ${cats.length} categories`);
 
   // Admin user
   const admin = await User.create({
     firstName: 'Portal',  lastName: 'Admin',
-    username: 'admin',    email: 'admin@legalaid.in',
-    password: 'Admin@1234', role: 'ADMIN',
+    username: 'admin',    email: 'adityakraj19@gmail.com',
+    password: 'Aditya@6206011636', role: 'ADMIN',
     city: 'New Delhi',    state: 'Delhi',
   });
   console.log('👤 Admin:', admin.email);
@@ -95,7 +99,7 @@ async function seed() {
 
   console.log('\n✅ Seed complete!\n');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('ADMIN    → admin@legalaid.in   / Admin@1234');
+  console.log('ADMIN    → adityakraj19@gmail.com / Aditya@6206011636');
   console.log('CITIZEN  → rohan@example.com   / Citizen@1234');
   console.log('LAWYER   → arjun@legalaid.in   / Lawyer@1234');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
